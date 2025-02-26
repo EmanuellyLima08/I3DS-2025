@@ -1,5 +1,5 @@
 import "./App.css";
-import foto from "./img/avatar.webp";
+import foto from "./img/fotoPerfil.jpeg";
 
 import Perfil from "./components/perfil/perfil";
 import Switch from "./components/switch/Switch";
