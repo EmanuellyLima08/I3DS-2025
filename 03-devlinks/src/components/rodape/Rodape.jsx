@@ -4,7 +4,7 @@ const Rodape = ({children}) => {
   return (
     <footer>
         <p>
-            Feito com 🤍 por <a href='https://github.com'>{children}</a>
+            Feito com 🤍 por <a href='https://github.com/EmanuellyLima08'>{children}</a>
         </p>
     </footer>
   )
