@@ -1,51 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&display=swap');
+
 .movie {
-  width: 310px;
-  height: 460px;
-  margin: 1.5rem;
   position: relative;
+  width: 300px;
+  height: 450px;
   overflow: hidden;
-  border-radius: 10px;
-  box-shadow: 0px 13px 10px -7px rgba(0, 0, 0, 0.4);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  border-radius: 12px;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Camada de informações do filme (inicialmente oculta) */
-.info {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Estilo da imagem */
+.movie img {
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Fundo escuro para destacar o texto */
+  object-fit: cover;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* Efeito ao passar o mouse sobre o card */
+.movie:hover {
+  transform: scale(1.05);
+}
+
+/* Efeito de brilho quando passar o mouse sobre a imagem */
+.movie:hover img {
+  filter: brightness(0.7);
+}
+
+
+.year {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
   color: #f9d3b4;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: normal;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
-  padding: 20px;
-  box-sizing: border-box;
+  z-index: 2;
 }
 
-/* Imagem do filme */
-.poster {
-  width: 100%;
-  height: 100%;
-}
-
-.poster img {
-  width: 100%;
-  height: 100%;
-  transition: opacity 0.3s ease-in-out;
-}
-
-/* Efeito ao passar o mouse */
-.movie:hover .info {
+/* Ano aparece quando o mouse passa sobre o card */
+.movie:hover .year {
   opacity: 1;
 }
 
-.movie:hover .poster img {
-  opacity: 0.3;
+/* Faixa inferior com título e tipo do filme */
+.info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: #343739;
+  color: #fff;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  text-align: left; /* Alinha o texto à esquerda */
+  padding-left: 10px; /* Adiciona um pequeno espaçamento à esquerda */
+}
+
+/* Tipo do filme (acima do título) */
+.type {
+  font-size: 14px;
+  font-weight: bold; /* Aplica o peso da fonte negrito */
+  font-family: 'Roboto', sans-serif; /* Aplica a fonte Roboto */
+  opacity: 0.8;
+  margin: 0;
+}
+
+/* Título do filme com cor personalizada */
+.title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #f9d3b4;
+  margin: 0;
+}
+
+/* Tipo do filme (à esquerda) */
+.type {
+  font-family: 'Funnel display'; /* Fonte Rustica Medium ou similar */
+  font-size: 14px;
+  opacity: 0.8;
+  margin: 0;
+  text-transform: uppercase; /* Deixa o texto em maiúsculas */
 }
