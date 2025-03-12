@@ -22,7 +22,7 @@ function App() {
       </ul>
 
       <div id="socialLinks">
-        <SocialLinks link={"https://instagram.com/"} icon={"logo-instagram"} />
+        <SocialLinks link={"https://www.instagram.com/manu_s__lima/"} icon={"logo-instagram"} />
         <SocialLinks link={"https://medicina.ucpel.edu.br/blog/tecnologia-na-medicina/"} icon={"document-text-outline"} />
         <SocialLinks link={"https://www.linkedin.com/in/emanuelly-lima-427800304/"} icon={"logo-linkedin"} />
       </div>
