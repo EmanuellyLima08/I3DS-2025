@@ -1,15 +1,14 @@
 import styles from "./MovieCard.module.css";
 
-const MovieCard = (props) => { //propriedades ou argumentos que eu não sei a quantidade correta
+const MovieCard = (props) => {
   return (
-    <div className={styles.Movie}>
-      <div>
+    <div className={styles.movie}>
+      <img src={props.Poster} alt={props.Title} />
+      <div className={styles.info}>
         <p>{props.Year}</p>
+        <h3>{props.Title}</h3>
+        <h4>{props.Type}</h4>
       </div>
-
-      <img src={props.Poster} alt="" />
-      <h4>{props.Type}</h4>
-      <h3>{props.Title}</h3>
     </div>
   );
 };
