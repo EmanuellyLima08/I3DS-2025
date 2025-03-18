@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import Footer from "./components/footer/Footer";
-import MovieCard from "./components/movieCard/movieCard";
-import logo  from "./assets/devflix.png";
+import MovieCard from "./components/movieCard/MovieCard";
+import logo from "./assets/devflix.png";
 import lupa from "./assets/search.svg";
 // import logo from 'https://placehold.co/200x200'
 
@@ -39,23 +39,23 @@ function App() {
 
       <div className="search">
         <input
-        onKeyDown={handleKeyPress}
-        onChange={(e) => setSearch(e.target.value)}
-        type="text"
-        placeholder="Pesquise por filmes" 
+          onKeyDown={handleKeyPress}
+          onChange={(e) => setSearch(e.target.value)}
+          type="text"
+          placeholder="Pesquise por filmes"
         />
         <img onClick={() => searchMovies(search)} src={lupa} alt="" />
       </div>
 
-    {movies?.length > 0 ? (
-      <div className="container">
-        {movies.map((movie, index) => (
-        <MovieCard key={index} apiUrl={apiUrl} {...movie} />
-      ))}
-      </div>
-    ) : (
-      <h2 className="empty">Filme não encontrado 😢</h2>
-    )}
+      {movies?.length > 0 ? (
+        <div className="container">
+          {movies.map((movie, index) => (
+            <MovieCard key={index} apiUrl={apiUrl} {...movie} />
+          ))}
+        </div>
+      ) : (
+        <h2 className="empty">Filme não encontrado 😢</h2>
+      )}
 
       <Footer
         devName={"ManúLima"}
