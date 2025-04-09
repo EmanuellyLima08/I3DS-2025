@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
-import io from "socket.io-client";
+import * as signalR from "@microsoft/signalr";
+import connection from "../signalr/connection";
 
 const Join = (props) => {
   const usernameRef = useRef();
@@ -11,11 +12,29 @@ const Join = (props) => {
       return;
     }
 
-    const servidorSocket = await io.connect("http://192.168.10.123:3001");
-    servidorSocket.emit("set_username", username);
+    try {
+      // Verifica se a conexão já está estabelecida
+      if (connection.state === signalR.HubConnectionState.Disconnected) {
+        await connection.start();
+        console.log("✅ Conectado ao servidor SignalR");
+      }
 
-    props.setSocket(servidorSocket);
-    props.visibility(true);
+      // Verifica se a conexão foi estabelecida corretamente
+      if (connection.state === signalR.HubConnectionState.Connected) {
+        // Definindo o usuário no backend
+        await connection.invoke("DefinirUsuario", username);
+        console.log("Usuário definido:", username);
+
+        // Atualizando o estado no componente pai
+        props.setUsername(username);  // <-- Aqui está a alteração
+        props.setSocket(connection);
+        props.visibility(true);
+      } else {
+        console.log("❌ Não foi possível estabelecer a conexão com o SignalR.");
+      }
+    } catch (err) {
+      console.error("❌ Erro ao conectar com o SignalR:", err);
+    }
   };
 
   return (
@@ -41,12 +60,9 @@ const Join = (props) => {
           </label>
         </div>
 
-        <button
-  className="w-100 py-2 fw-semibold join-button"
-  onClick={handleSubmit}
->
-  Entrar
-</button>
+        <button className="w-100 py-2 fw-semibold join-button" onClick={handleSubmit}>
+          Entrar
+        </button>
       </div>
     </div>
   );

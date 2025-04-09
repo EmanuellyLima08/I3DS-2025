@@ -6,11 +6,14 @@ const Chat = (props) => {
   const bottomRef = useRef(null);
 
   useEffect(() => {
-    props.socket.on("receive_message", (data) => {
-      setMessageList((current) => [...current, data]);
+    props.socket.on("ReceberMensagem", (usuario, mensagem) => {
+      setMessageList((current) => [
+        ...current,
+        { author: usuario, text: mensagem },
+      ]);
     });
 
-    return () => props.socket.off("receive_message");
+    return () => props.socket.off("ReceberMensagem");
   }, [props.socket]);
 
   useEffect(() => {
@@ -18,13 +21,10 @@ const Chat = (props) => {
   }, [messageList]);
 
   const handleSubmit = () => {
-    if (props.socket.author === "undefined") window.location.reload();
-
     const message = messageRef.current.value;
     if (!message.trim()) return;
 
-    props.socket.emit("message", message);
-
+    props.socket.invoke("EnviarMensagem", message);
     messageRef.current.value = "";
     messageRef.current.focus();
   };
@@ -37,7 +37,7 @@ const Chat = (props) => {
             <div
               key={index}
               className={`chat-bubble p-2 rounded-3 shadow-sm ${
-                message.authorId === props.socket.id
+                message.author === props.username
                   ? "sent align-self-end"
                   : "received align-self-start"
               }`}

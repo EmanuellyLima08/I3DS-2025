@@ -10,6 +10,7 @@ import Chat from "./pages/Chat";
 function App() {
   const [chatVisibility, setChatVisibility] = useState(false);
   const [socket, setSocket] = useState(null);
+  const [username, setUsername] = useState(""); // <-- adicionado
 
   return (
     <div
@@ -17,9 +18,13 @@ function App() {
       className="m-0 p-0 min-vh-100 d-flex flex-column justify-content-center align-items-center bg-dark text-light"
     >
       {chatVisibility ? (
-        <Chat socket={socket} />
+        <Chat socket={socket} username={username} />
       ) : (
-        <Join setSocket={setSocket} visibility={setChatVisibility} />
+        <Join
+          setSocket={setSocket}
+          setUsername={setUsername}       // <-- adicionando
+          visibility={setChatVisibility}
+        />
       )}
     </div>
   );
