@@ -9,7 +9,7 @@ const Header = () => {
                 <span className='navbar-brand fw-bold fs-3'>DevSteam</span>
             </div>
 
-            <input type='text' className='w-100 d-none d-md-block border-0 rounded-1 buscar-input px-4 my-2 ms-5' placeholder='Buscar...' />
+            <input type='text' className='w-100 d-none d-md-block border-0 rounded-1 buscar px-4 my-2 ms-5' placeholder='Buscar...' />
         </div>
 
         <div id='carrinho'>
