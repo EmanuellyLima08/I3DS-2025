@@ -1,9 +1,7 @@
 import React from "react";
 
 const CarrinhoOffCanvas = (props) => {
-const total = props.carrinhoItem.reduce((acc, item) => 
-    acc + (item.preco - (item.preco * item.desconto) / 100) * item.quantidade, 0
-    );
+const total = props.carrinhoItem.reduce((acc, item) => acc + (item.preco - (item.preco * item.desconto) / 100) * item.quantidade, 0);
 
   return (
     <div
@@ -85,15 +83,13 @@ const total = props.carrinhoItem.reduce((acc, item) =>
                 </li>
               ))}
             </ul>
-
-            <hr className="text-light" />
-            <div className="d-flex justify-content-between">
-              <strong>Total:</strong>
+            <hr className="text-white" />
+            <div className="d-flex justify-content-between text-light fs-4">
+              <strong>Total</strong>
               <strong>R$ {total.toFixed(2)}</strong>
             </div>
-            <button className="btn btn-sucess w-100 mt-2">Finalizar Compra</button>
+            <button className="btn btn-success w-100 mt-2">Finalizar Compra</button>
           </>
-        
         )}
       </div>
     </div>
