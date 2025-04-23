@@ -1,7 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router";
 
 const CarrinhoOffCanvas = (props) => {
-const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const total = props.carrinhoItem.reduce(
     (acc, item) =>
@@ -9,9 +10,9 @@ const navigate = useNavigate();
     0
   );
 
-const goToCheckout = () => { 
-  navigate("/checkout");
-}
+  const goToCheckout = () => {
+    navigate("/checkout");
+  };
 
   return (
     <div
@@ -112,7 +113,7 @@ const goToCheckout = () => {
             <button
               id="addCarrinho"
               className="btn btn-success desconto border-0 w-100 mt-2 fs-5"
-              data-bs-togle="offcanvas"
+              data-bs-toggle="offcanvas"
               data-bs-target="#carrinhoOffCanvas"
               onClick={goToCheckout}
             >
